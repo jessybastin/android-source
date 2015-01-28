@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="07-jdk/src"/>
+	<classpathentry kind="src" path="11-binary/src"/>
+	<classpathentry kind="src" path="12-syntax/src"/>
+	<classpathentry kind="src" path="13-primitive-data-types/src"/>
+	<classpathentry kind="src" path="14-best-practices/src"/>
+	<classpathentry kind="src" path="15-operations/src"/>
+	<classpathentry kind="src" path="16-logic/src"/>
+	<classpathentry kind="src" path="17-loops/src"/>
+	<classpathentry kind="src" path="18-methods/src"/>
+	<classpathentry kind="src" path="19-classes/src"/>
+	<classpathentry kind="src" path="20-inheritance/src"/>
+	<classpathentry kind="src" path="21-objects/src"/>
+	<classpathentry kind="src" path="22-security/src"/>
+	<classpathentry kind="src" path="23-static/src"/>
+	<classpathentry kind="src" path="24-interfaces/src"/>
+	<classpathentry kind="src" path="25-polymorphism/src"/>
+	<classpathentry kind="src" path="26-generics/src"/>
+	<classpathentry kind="src" path="27-collections/src"/>
+	<classpathentry kind="src" path="28-recursion/src"/>
+	<classpathentry kind="src" path="29-exceptions/src"/>
+	<classpathentry kind="src" path="30-singletons/src"/>
+	<classpathentry kind="src" path="31-threads/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

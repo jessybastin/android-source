@@ -37,7 +37,10 @@ public class Methods extends Object {
 		 ************************************************/
 
 		// You are free to modify the return statement
-		return false;
+		if (original==true)
+			return false;
+		else
+			return true;
 	}
 
 	/*
@@ -60,6 +63,9 @@ public class Methods extends Object {
 		/************************************************
 		 * Your work goes here
 		 ************************************************/
+		for (int i=0; i <= numbers.length-1;i++){
+			numbers[i] = numbers[i]*-1;
+		}
 	}
 
 
@@ -90,9 +96,19 @@ public class Methods extends Object {
 		/************************************************
 		 * Your work goes here
 		 ************************************************/
-
+		boolean[] boolsList = new boolean[someNumbers.length];
+		for (int i =0; i <= someNumbers.length-1;i++){
+			if (someNumbers[i] >= floor){
+				boolsList[i]= true;
+			}
+			else{
+				boolsList[i]=false;
+			}
+		}
+		
 		// You are free to modify the return statement
-		return new boolean [0];
+		
+		return boolsList;
 	}
 
 	/*
@@ -118,8 +134,21 @@ public class Methods extends Object {
 		 * Your work goes here
 		 ************************************************/
 
+		int[] minMaxArray = new int[2];
+		int min= someNumbers[0];
+		int max= someNumbers[0];
+		for (int i =0; i <= someNumbers.length-1;i++){
+			if (someNumbers[i] < min){
+				min= someNumbers[i];
+			}
+			if (someNumbers[i] > max){
+				max= someNumbers[i];
+			}
+		}
+		minMaxArray[0]=min;
+		minMaxArray[1]=max;
 		// You are free to modify the return statement
-		return new int[2];
+		return minMaxArray;
 	}
 
 
