@@ -240,14 +240,16 @@ class Dog {
     	mEatCount++;
     	if (mEatCount==3){
     		mEatCount =0;
-    		if (mSize =="average"){
-    			mSize = "large";
-    		}
-    		if (mSize =="small"){
-    			mSize = "average";
-    		}
-    		if (mSize =="tiny"){
-    			mSize = "small";
+    		switch(mSize) {
+    	    case "average":
+    	    	mSize = "large";
+    	        break;
+    	    case "small":
+    	    	mSize = "average";
+    	        break;
+    	    case "tiny":
+    	    	mSize = "small";
+    	        break;
     		}
     	}
     }
@@ -276,14 +278,16 @@ class Dog {
     	mPlayCount++;
     	if (mPlayCount==6){
     		mPlayCount =0;
-    		if (mSize =="small"){
-    			mSize = "tiny";
-    		}
-    		if (mSize =="average"){
-    			mSize = "small";
-    		}
-    		if (mSize =="large"){
-    			mSize = "average";
+    		switch(mSize) {
+    	    case "small":
+    	    	mSize = "tiny";
+    	        break;
+    	    case "average":
+    	    	mSize = "small";
+    	        break;
+    	    case "large":
+    	    	mSize = "average";
+    	        break;
     		}
     	}
     }
