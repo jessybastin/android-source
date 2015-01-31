@@ -5,6 +5,7 @@ class Artist extends Object {
 	String mFirstName;
 	// The artist's last name
 	String mLastName;
+	
 
 	/*
 	 * Artist
@@ -16,4 +17,11 @@ class Artist extends Object {
 	 *	ASSIGNMENT:
 	 *	Create the Artist constructor
 	/************************************************/
+	
+	public Artist(String mFirstName, String mLastName) {
+		super();
+		this.mFirstName = mFirstName;
+		this.mLastName = mLastName;
+	}
+	
 }

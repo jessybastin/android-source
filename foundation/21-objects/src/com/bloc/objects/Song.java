@@ -11,7 +11,7 @@ class Song extends Object {
 	/*
 	 * Song
 	 *
-	 * Defailt Constructor
+	 * Default Constructor
 	 * Side-effects: Assigns some default ensemble, title and
 	 *				 and year of your choosing
 	 */
@@ -19,7 +19,18 @@ class Song extends Object {
 	 *	ASSIGNMENT:
 	 *	Create the first Song constructor
 	/************************************************/
-
+	
+	public Song(){
+		super();
+		Artist[] artist = new Artist[2];
+		for (int i=0; i< artist.length;i++){
+			artist[0]= new Artist("Alexander","Wilson");
+			artist[1]= new Artist("Johnson","William");
+		}
+		this.mEnsemble = new Ensemble(artist);
+		this.mTitle  = "Title 1";
+		this.mYearReleased = 1970;
+	}
 	/*
 	 * Song
 	 *
@@ -32,7 +43,14 @@ class Song extends Object {
 	 *	ASSIGNMENT:
 	 *	Create the second Song constructor
 	/************************************************/
-
+	public Song(Ensemble mEnsemble, String mTitle) {
+		super();
+		this.mEnsemble = mEnsemble;
+		this.mTitle = mTitle;
+		this.mYearReleased = 0;
+	}
+	
+	
 	/*
 	 * Song
 	 *
@@ -44,4 +62,12 @@ class Song extends Object {
 	 *	ASSIGNMENT:
 	 *	Create the third Song constructor
 	/************************************************/
+	
+	public Song(Ensemble mEnsemble, String mTitle, int mYearReleased) {
+		super();
+		this.mEnsemble = mEnsemble;
+		this.mTitle = mTitle;
+		this.mYearReleased = mYearReleased;
+	}
+	
 }

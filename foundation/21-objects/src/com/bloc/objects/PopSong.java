@@ -14,7 +14,17 @@ class PopSong extends Song {
 	 *	ASSIGNMENT:
 	 *	Create the first PopSong constructor
 	/************************************************/
-
+     public PopSong(){
+ 		super();
+ 		Artist[] artist = new Artist[2];
+ 		for (int i=0; i< artist.length;i++){
+ 			artist[0]= new Artist("Alexander","Wilson PopSong");
+ 			artist[1]= new Artist("Johnson","William PopSong");
+ 		}
+ 		this.mEnsemble = new Ensemble(artist);
+ 		this.mTitle  = "Title PopSong 1";
+ 		this.mYearReleased = 1900;    	 
+     }
 	/*
 	 * PopSong
 	 * 
@@ -28,6 +38,12 @@ class PopSong extends Song {
 	 *	Create the second PopSong constructor
 	/************************************************/
 
+     public PopSong(Ensemble mEnsemble, String mTitle){
+    	 super();
+    	 this.mEnsemble = mEnsemble;
+  		 this.mTitle  = mTitle;
+     }
+     
 	/*
 	 * PopSong
 	 *
@@ -41,7 +57,14 @@ class PopSong extends Song {
 	 *	ASSIGNMENT:
 	 *	Create the third PopSong constructor
 	/************************************************/
-
+ 	
+     public PopSong(Ensemble mEnsemble, String mTitle, int mYearReleased) {
+		super();
+		this.mEnsemble = mEnsemble;
+		this.mTitle = mTitle;
+		this.mYearReleased = mYearReleased;
+	}
+     
 	/*
 	 * PopSong
 	 *
@@ -55,4 +78,12 @@ class PopSong extends Song {
 	 *	ASSIGNMENT:
 	 *	Create the fourth PopSong constructor
 	/************************************************/
+     
+     public PopSong(Ensemble mEnsemble, String mTitle, int mYearReleased, int mWeeksOnBillboard) {
+ 		super();
+ 		this.mEnsemble = mEnsemble;
+ 		this.mTitle = mTitle;
+ 		this.mYearReleased = mYearReleased;
+ 		this.mWeeksOnBillboard = mWeeksOnBillboard;
+ 	}
 }
