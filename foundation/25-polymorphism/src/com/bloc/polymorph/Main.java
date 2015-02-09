@@ -1,5 +1,8 @@
 package com.bloc.polymorph;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import com.bloc.polymorph.pets.*;
 
 public class Main extends Object {
@@ -17,27 +20,23 @@ public class Main extends Object {
 	 	 *	Replace the operations below by employing polymorphism
 		/************************************************/
 
-		dog.feed();
-		dog.wash();
-		dog.exercise();
-
-		cat.feed();
-		cat.wash();
-		cat.exercise();
-
-		bird.feed();
-		bird.wash();
-		bird.exercise();
-
-		snake.feed();
-		snake.wash();
-		snake.exercise();
-
-		tarantula.feed();
-		tarantula.wash();
-		tarantula.exercise();
-
-		/************************************************
+		ArrayList pets = new ArrayList();
+		pets.add(dog);
+		pets.add(cat);
+		pets.add(bird);
+		pets.add(snake);
+		pets.add(tarantula);		
+        
+		Iterator iterator =  pets.iterator(); 
+        
+		while (iterator.hasNext()){
+			Pet p = (Pet) iterator.next();
+			p.feed();
+			p.wash();
+			p.exercise();
+		}
+		
+				/************************************************
 	 	 *	ASSIGNMENT:
 	 	 *	Replace the operations above by employing polymorphism
 		/************************************************/
