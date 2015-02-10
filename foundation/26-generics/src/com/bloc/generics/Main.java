@@ -7,12 +7,18 @@ public class Main extends Object {
 	public static void main(String [] args) {
 
 		ToyBox toyBox = new ToyBox();
-		
+	
+			
 		/************************************************
  		 *	ASSIGNMENT:
  		 *	Place several Toy objects into toyBox
 		/************************************************/
-
+		
+		//Toy<Thing> mToy= new Toy<Thing>(new Book());
+		toyBox.addToy(new Toy<Thing>(new Book()));
+		toyBox.addToy(new Toy<Thing>(new Spoon()));
+		toyBox.addToy(new Toy<Thing>(new ActionFigure()));
+		
 		assert toyBox.getToyCount() > 0 : "Let's get some toys in that box!";
 		System.out.println("Inside your toybox you've got:");
 		for (int i = 0; i < toyBox.getToyCount(); i++) {
