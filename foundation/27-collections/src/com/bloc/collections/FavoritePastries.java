@@ -25,11 +25,13 @@ public class FavoritePastries {
 	 *	between rating and pastry: HashMap<Integer, List<Pastry>>
 	/************************************************/
 
+	private HashMap<Pastry, Integer> mPastryMap;
 
 	public FavoritePastries() {
 		/************************************************
  	 	 *	WORK HERE
 		/************************************************/
+		mPastryMap = new HashMap<Pastry, Integer>();
 	}
 
 	/* 
@@ -51,6 +53,12 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE
 		/************************************************/
+		if (mPastryMap.containsKey(pastry)) {
+			mPastryMap.put(pastry, mPastryMap.get(pastry));
+		}
+		else{
+			mPastryMap.put(pastry, new Integer(rating));
+		}
 	}
 
 	/* 
@@ -69,6 +77,10 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE, you must modify the return value
 		/************************************************/
+		if (mPastryMap.containsKey(pastry)) {
+			mPastryMap.remove(pastry);
+			return true;
+		}	
 		return false;
 	}
 
@@ -90,6 +102,9 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE, you must modify the return value
 		/************************************************/
+		if (mPastryMap.containsKey(pastry)) {
+			return (mPastryMap.get(pastry)).intValue();
+		}	
 		return -1;
 	}
 
@@ -113,7 +128,7 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE, you must modify the return value
 		/************************************************/
-		return null;
+		return mPastryMap.keySet();
 	}
 
 }
