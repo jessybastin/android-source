@@ -16,6 +16,7 @@ public class Main extends Object {
 	public static void main(String [] args) {
 		tryGetMax();
 		tryRemove();
+		System.out.println("test");
 
 		System.out.println("/************************/");
 		System.out.println("/*                      */");

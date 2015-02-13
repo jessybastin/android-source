@@ -21,14 +21,12 @@ public class Main extends Object {
 			}
 			numberList.add(temp);
 		}
-
 		try {
 			int recursedMax = RecursionUtils.findMaxRecursively(numberList);
 			if (recursedMax != max) {
 				System.out.println("Max was supposed to be " + max + ", returned: " + recursedMax);
 				System.exit(1);
 			}
-
 			numberList.clear();
 			numberList.add(2);
 			recursedMax = RecursionUtils.findMaxRecursively(numberList);
