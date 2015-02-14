@@ -25,6 +25,7 @@ public class FunMethods extends Object {
 		}
 		return max;
 	}
+	
 
 	public static Object[] remove(Object[] original, int index) throws IllegalArgumentException, IndexOutOfBoundsException {
 		if (original == null) {

@@ -14,9 +14,9 @@ import java.util.Random;
 public class Main extends Object {
 
 	public static void main(String [] args) {
+		
 		tryGetMax();
 		tryRemove();
-		System.out.println("test");
 
 		System.out.println("/************************/");
 		System.out.println("/*                      */");
@@ -32,9 +32,10 @@ public class Main extends Object {
 	 *	ASSIGNMENT:
  	 *	Catch thrown exceptions
 	/************************************************/
-	private static final void tryGetMax() {
+	private static final void tryGetMax()  {
 		int max = 0;
-		max = FunMethods.getMax((Integer[])null);
+		try{
+			max = FunMethods.getMax((Integer[])null);			
 		Integer[] numbers = new Integer[50];
 		Random rand = new Random();
 		for (int i = 0; i < 50; i++) {
@@ -44,6 +45,17 @@ public class Main extends Object {
 		max = FunMethods.getMax(numbers);
 		numbers[32] = new Integer(rand.nextInt(500));
 		max = FunMethods.getMax(numbers);
+		}
+		catch (IllegalArgumentException e){
+			//System.out.println("error");
+			//e.printStackTrace();
+		}
+		catch (IllegalStateException e){
+			//System.out.println("error 2");
+			//e.printStackTrace();
+			
+		}			
+
 	}
 
 	/************************************************
@@ -51,7 +63,8 @@ public class Main extends Object {
  	 *	Catch thrown exceptions
 	/************************************************/
 	private static final void tryRemove() {
-		FunMethods.remove(null, 2);
+		try{
+			FunMethods.remove(null, 2);
 		Object[] someObjects = new Object[12];
 		someObjects[0] = "a string!";
 		someObjects[1] = new Integer(32);
@@ -60,7 +73,13 @@ public class Main extends Object {
 		for (int i = 4; i < someObjects.length; i++) {
 			someObjects[i] = String.valueOf(i);
 		}
-		FunMethods.remove(someObjects, 12);
-		someObjects = FunMethods.remove(someObjects, 3);
+			someObjects = FunMethods.remove(someObjects, 3);
+		}
+		catch (IllegalArgumentException e){
+			//null
+		}
+		catch(IndexOutOfBoundsException e){
+			//null
+		}
 	}
 }
