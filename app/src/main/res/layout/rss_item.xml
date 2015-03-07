@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <TextView
+    <io.bloc.android.blocly.ui.widget.RobotoTextView
+        style="@style/Headline"
         android:id="@+id/tv_rss_item_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,7 +15,8 @@
         android:textColor="@color/text_primary"
     />
 
-    <TextView
+    <io.bloc.android.blocly.ui.widget.RobotoTextView
+        style="@style/Caption"
         android:id="@+id/tv_rss_item_feed_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,7 +27,8 @@
         android:textSize="14sp"
         android:textColor="@color/text_secondary"/>
 
-    <TextView
+    <io.bloc.android.blocly.ui.widget.RobotoTextView
+        style="@style/Body1"
         android:id="@+id/tv_rss_item_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
