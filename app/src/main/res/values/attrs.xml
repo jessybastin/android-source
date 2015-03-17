@@ -13,17 +13,14 @@
             <enum name="Medium" value="7"/>
             <enum name="MediumItalic" value="8"/>
             <enum name="Regular" value="9"/>
-        </attr>
-
-        <attr name="robotoFont1" format="enum">
-            <enum name="Thin" value="0"/>
-            <enum name="ThinItalic" value="1"/>
-            <enum name="CondensedBold" value="2"/>
-            <enum name="CondensedBoldItalic" value="3"/>
-            <enum name="CondensedItalic" value="4"/>
-            <enum name="CondensedLight" value="5"/>
-            <enum name="CondensedLightItalic" value="6"/>
-            <enum name="CondensedRegular" value="7"/>
+            <enum name="Thin" value="10"/>
+            <enum name="ThinItalic" value="11"/>
+            <enum name="CondensedBold" value="12"/>
+            <enum name="CondensedBoldItalic" value="13"/>
+            <enum name="CondensedItalic" value="14"/>
+            <enum name="CondensedLight" value="15"/>
+            <enum name="CondensedLightItalic" value="16"/>
+            <enum name="CondensedRegular" value="19"/>
         </attr>
     </declare-styleable>
 

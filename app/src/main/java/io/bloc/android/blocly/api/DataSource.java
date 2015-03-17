@@ -31,7 +31,8 @@ public class DataSource {
     void createFakeData() {
         feeds.add(new RssFeed("My Favorite Feed",
                 "This feed is just incredible, I can't even begin to tell you…",
-                "http://favoritefeed.net", "http://feeds.feedburner.com/favorite_feed?format=xml"));
+                "http://favoritefeed.net", "http://feeds.feedburner.com/favorite_feed?format=xml",
+                "http://cdn.wonderfulengineering.com/wp-content/uploads/2014/07/background-wallpapers-32.jpg"));
         for (int i = 0; i < 10; i++) {
             items.add(new RssItem(String.valueOf(i),
                     "An incredible news story #" + i,

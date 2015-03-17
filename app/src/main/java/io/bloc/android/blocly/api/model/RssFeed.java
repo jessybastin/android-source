@@ -8,6 +8,7 @@ public class RssFeed {
     private String description;
     private String siteUrl;
     private String feedUrl;
+    private String imageUrl;
 
     public String getTitle() {
         return title;
@@ -25,11 +26,18 @@ public class RssFeed {
         return feedUrl;
     }
 
-    public RssFeed(String title, String description, String siteUrl, String feedUrl) {
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public RssFeed(String title, String description, String siteUrl, String feedUrl,String imageUrl) {
 
         this.title = title;
         this.description = description;
         this.siteUrl = siteUrl;
         this.feedUrl = feedUrl;
+        this.imageUrl = imageUrl;
+
+
     }
 }
