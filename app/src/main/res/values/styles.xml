@@ -1,7 +1,8 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Material">
+ <!--   <style name="AppTheme" parent="android:Theme.Material">  commented as per lesson 43 -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Main theme colors -->
         <!--   your app's branding color (for the app bar) -->
         <item name="android:colorPrimary">@color/primary</item>
@@ -11,13 +12,31 @@
         <item name="android:colorAccent">@color/accent</item>
         <!-- Window Background -->
         <item name="android:windowBackground">@color/windowBackground</item>
+
+        <!-- DrawerArrowStyle -->
+        <item name="drawerArrowStyle">@style/DrawerArrow</item>
+        <item name="colorPrimary">@color/primary</item>
+
     </style>
+
+    <style name="DrawerArrow" parent="Base.Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/actionBarItems</item>
+        <item name ="gapBetweenBars">10dp</item>
+    </style>
+
 
     <style name="Headline">
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textSize">24sp</item>
         <item name="android:ellipsize">end</item>
         <item name="robotoFont">Regular</item>
+    </style>
+
+    <style name="Button">
+        <item name="android:textColor">@drawable/btn_text_drawable</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="robotoButton">Bold</item>
     </style>
 
     <style name="Caption">
@@ -33,5 +52,7 @@
         <item name="android:textSize">14sp</item>
         <item name="robotoFont">CondensedBoldItalic </item>
     </style>
+
+
 
 </resources>

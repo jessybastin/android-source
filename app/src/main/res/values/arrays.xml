@@ -21,5 +21,10 @@
         <item>RobotoCondensed-LightItalic.ttf</item>
         <item>RobotoCondensed-Regular.ttf</item>
     </string-array>
-
+    <string-array name="roboto_button_file_names">
+        <item>Roboto-Black.ttf</item>
+        <item>Roboto-BlackItalic.ttf</item>
+        <item>Roboto-Bold.ttf</item>
+        <item>Roboto-BoldItalic.ttf</item>
+    </string-array>
 </resources>

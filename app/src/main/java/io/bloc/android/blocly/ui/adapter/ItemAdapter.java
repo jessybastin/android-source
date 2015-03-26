@@ -1,11 +1,13 @@
 package io.bloc.android.blocly.ui.adapter;
 
+import android.animation.ValueAnimator;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
@@ -45,6 +47,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
 
     class ItemAdapterViewHolder extends RecyclerView.ViewHolder implements ImageLoadingListener, View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
+        boolean contentExpanded;
+
         TextView title;
         TextView feed;
         TextView content;
@@ -65,6 +69,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
         CheckBox archiveCheckBox;
         CheckBox favoriteCheckBox;
 
+        View expandedContentWrapper;
+        TextView expandedContent;
+        TextView visitSite;
+
+
+
 
         public ItemAdapterViewHolder(View itemView) {
             super(itemView);
@@ -77,9 +87,14 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
             archiveCheckBox = (CheckBox) itemView.findViewById(R.id.cb_rss_item_check_mark);
             favoriteCheckBox = (CheckBox) itemView.findViewById(R.id.cb_rss_item_favorite_star);
 
+            expandedContentWrapper = itemView.findViewById(R.id.ll_rss_item_expanded_content_wrapper);
+            expandedContent = (TextView) itemView.findViewById(R.id.tv_rss_item_content_full);
+            visitSite = (TextView) itemView.findViewById(R.id.tv_rss_item_visit_site);
+
             itemView.setOnClickListener(this);
             archiveCheckBox.setOnCheckedChangeListener(this);
             favoriteCheckBox.setOnCheckedChangeListener(this);
+             visitSite.setOnClickListener(this);
 
 
 //Background Image
@@ -93,6 +108,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
             feed.setText(rssFeed.getTitle());
             title.setText(rssItem.getTitle());
             content.setText(rssItem.getDescription());
+            expandedContent.setText(rssItem.getDescription());
+
           //  imageURL =rssItem.getImageUrl();
             //backgroundImageURL=rssFeed.getImageUrl();
            // ImageLoader.getInstance().loadImage(rssFeed.getImageUrl(), this);
@@ -111,6 +128,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
            // Log.e(TAG,"ItemAdapterViewHolder.update for URL: "+rssItem.getImageUrl());
 
            // if(imageURL != null) {
+
            if(rssItem.getImageUrl() != null) {
                 headerWrapper.setVisibility(View.VISIBLE);
                 headerImage.setVisibility(View.INVISIBLE);
@@ -152,11 +170,22 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
             //final TransitionDrawable background = (TransitionDrawable) itemView.getBackground();
             //background.startTransition(30);
             Toast.makeText(view.getContext(),rssItem.getTitle(),Toast.LENGTH_SHORT).show();
+
+            if (view == itemView){
+                contentExpanded = !contentExpanded;
+                expandedContentWrapper.setVisibility(contentExpanded ? View.VISIBLE : View.GONE);
+                content.setVisibility(contentExpanded ? View.GONE : View.VISIBLE);
+                animateContent(!contentExpanded);
+            }
+            else {
+                Toast.makeText(view.getContext(), "Visit " + rssItem.getUrl(),Toast.LENGTH_SHORT).show();
+            }
         }
 
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            if (buttonView.getId() == R.id.cb_rss_item_check_mark){
+            if (buttonView.getId() == R.id.cb_rss_item_check_mark ){
+
                 Log.v(TAG, "button view checked changed to: " + isChecked);
             }
             else{
@@ -164,9 +193,71 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
             }
 
         }
+
+
+        private void animateContent(final boolean expand) {
+            if ((expand && contentExpanded) || (!expand && !contentExpanded)) {
+                Log.v(TAG, "returning ");
+                return;
+            }
+            int startingHeight = expandedContentWrapper.getMeasuredHeight();
+            int finalHeight = content.getMeasuredHeight();
+
+            if (expand) {
+                startingHeight = finalHeight;
+                expandedContentWrapper.setAlpha(0f);
+                expandedContentWrapper.setVisibility(View.VISIBLE);
+
+                expandedContentWrapper.measure(
+                        View.MeasureSpec.makeMeasureSpec(content.getWidth(), View.MeasureSpec.EXACTLY),
+                        ViewGroup.LayoutParams.WRAP_CONTENT
+                );
+                finalHeight = expandedContentWrapper.getMeasuredHeight();
+            } else {
+
+                content.setVisibility(View.VISIBLE);
+            }
+
+            startAnimator(startingHeight, finalHeight, new ValueAnimator.AnimatorUpdateListener(){
+
+                public void onAnimationUpdate(ValueAnimator valueAnimator) {
+
+                    float animatedFraction = valueAnimator.getAnimatedFraction();
+                    float wrapperAlpha = expand ? animatedFraction : 1f - animatedFraction;
+                    float contentAlpha = 1f - wrapperAlpha;
+
+                    expandedContentWrapper.getLayoutParams().height = animatedFraction == 1f ?
+                            ViewGroup.LayoutParams.WRAP_CONTENT :
+                            (Integer) valueAnimator.getAnimatedValue();
+
+                    expandedContentWrapper.requestLayout();
+                    if (animatedFraction == 1) {
+                        if (expand) {
+                            content.setVisibility(View.GONE);
+                        } else {
+                            expandedContentWrapper.setVisibility(View.GONE);
+                        }
+
+                    }
+                }
+
+                });
+                contentExpanded = expand;
+            }
+
+        private void startAnimator(int start,int end, ValueAnimator.AnimatorUpdateListener animatorUpdateListener){
+
+            ValueAnimator valueAnimator = ValueAnimator.ofInt(start,end);
+            valueAnimator.addUpdateListener(animatorUpdateListener);
+            valueAnimator.setDuration((itemView.getResources().getInteger(android.R.integer.config_mediumAnimTime)));
+            valueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+            valueAnimator.start();
+
+        }
+
+        }
+
     }
 
 
-
-}
 
